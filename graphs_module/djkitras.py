@@ -3,7 +3,9 @@ def djk(graph_elements,distance,source,destination):
     print(destination)
     queue=[]
     visited=[]
+    path=[]
     queue.append(source)
+    path.append(destination)
     visited.append(source)
     if(source in distance):
         distance[source]['Dist']=0
@@ -21,9 +23,13 @@ def djk(graph_elements,distance,source,destination):
                 if(distance[neighbours]['Dist']>(graph_elements[s][neighbours] + distance[s]['Dist'])):
                     distance[neighbours]['prev'] = s
                     distance[neighbours]['Dist']= graph_elements[s][neighbours]+distance[s]['Dist']
+    while destination!=source:
+        path.append(distance[destination]['prev'])
+        destination=distance[destination]['prev']
 
+    path.reverse()
 
-    print(visited)
+    print(path)
     return distance
 
 
@@ -64,4 +70,4 @@ graph_elements={'C': {'A': 2, 'F': 2, 'Z': 4},
  'E': {'B': 7}}
 # print(graph_elements['C']['A'])
 # print(distance['A']['Dist'])
-print(djk(graph_elements,distance,'C','G'))
+print(djk(graph_elements,distance,'A','G'))
