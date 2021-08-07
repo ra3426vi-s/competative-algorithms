@@ -70,4 +70,4 @@ graph_elements={'C': {'A': 2, 'F': 2, 'Z': 4},
  'E': {'B': 7}}
 # print(graph_elements['C']['A'])
 # print(distance['A']['Dist'])
-print(djk(graph_elements,distance,'A','G'))
+print(djk(graph_elements,distance,'C','G'))
